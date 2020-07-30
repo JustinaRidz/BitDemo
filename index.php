@@ -31,15 +31,18 @@
     $path = "./" . str_replace('./', '', $_GET['path'], $i);
     $dirContents = scandir($path);
     print($path);
+    
 
-    print("<table>
-    <tr>
-         <th>Name</th>
-         <th>Type</th>
-    </tr>");
+    print(
+        "<table>
+            <tr>
+               <th>Name</th>
+               <th>Type</th>
+            </tr>"
+    );
     for ($i = 0; $i < count($dirContents); $i++) {
-        // if ($dirContents[$i] === ".." or $dirContents[$i] === ".")
-        // continue;
+        if ($dirContents[$i] === ".." or $dirContents[$i] === ".")
+        continue;
         print("<tr><td>");
         // print($path . '/' . $dirContents[$i]);
         if (is_dir($dirContents[$i])) {
@@ -50,7 +53,8 @@
             print("<td>" . $dirContents[$i] . "</td></tr>");
         }
     }
-    print("</table>");
+    print("</table>" . "<br>");
+    echo '<button onclick="window.history.back()">Go Back</button>';
     ?>
 
 </body>
